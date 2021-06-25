@@ -1,11 +1,17 @@
-const Discord = require('discord.js');
+"use strict";
+const Discord = require("discord.js");
 const client = new Discord.Client();
 
-require('dotenv').config();
+require("dotenv").config();
 const token = process.env.TOKEN;
 
-client.on('ready',()=>{
-  console.log('the client is ready')
-})
+const command = require("./command");
 
-client.login(token)
+client.on("ready", () => {
+  console.log("the client is ready");
+  command(client, ["test1", "test2"], (message) => {
+    message.channel.send("Pong!");
+  });
+});
+
+client.login(token);
