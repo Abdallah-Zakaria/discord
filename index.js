@@ -6,9 +6,13 @@ require("dotenv").config();
 const token = process.env.TOKEN;
 
 const command = require("./command");
+const firstMessage = require('./first-message');
 
 client.on("ready", () => {
   console.log("the client is ready");
+  
+  firstMessage(client,'858023158900064306','hello world' , ['🔥'])
+
   command(client, ["test1", "test2"], (message) => {
     message.channel.send("Pong!");
   });
