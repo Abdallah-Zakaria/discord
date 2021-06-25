@@ -28,6 +28,16 @@ client.on("ready", () => {
       })
     }
   })
+  // This command will change the bot status 
+  command(client, 'status',message=>{
+    const content = message.content.replace('!status ', '')
+    client.user.setPresence({
+      activity:{
+        name:content,
+        type:0,
+      }
+    })
+  })
 });
 
 client.login(token);
